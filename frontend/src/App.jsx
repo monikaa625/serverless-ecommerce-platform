@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./App.css";
 import products from "./data/products";
 import ProductCard from "./components/ProductCard";
 
@@ -10,20 +11,24 @@ function App() {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Serverless E-Commerce Platform</h1>
+    <div className="app">
+      <h1 className="title">
+        Serverless E-Commerce Platform
+      </h1>
 
-      <h2>Cart: {cartCount}</h2>
+      <div className="cart">
+        Cart: {cartCount}
+      </div>
 
-      <h2>Products</h2>
-
-      {products.map((product) => (
-        <ProductCard
-          key={product.id}
-          product={product}
-          addToCart={addToCart}
-        />
-      ))}
+      <div className="products-grid">
+        {products.map((product) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+            addToCart={addToCart}
+          />
+        ))}
+      </div>
     </div>
   );
 }
