@@ -5,7 +5,9 @@ function ProductCard({ product, addToCart }) {
 
       <p>${product.price}</p>
 
-      <button onClick={addToCart}>
+      <button
+        onClick={() => addToCart(product)}
+      >
         Add to Cart
       </button>
     </div>
