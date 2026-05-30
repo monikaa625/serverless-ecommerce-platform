@@ -1,4 +1,4 @@
-function Cart({ cartItems }) {
+function Cart({ cartItems, removeFromCart }) {
   const total = cartItems.reduce(
     (sum, item) => sum + item.price,
     0
@@ -21,7 +21,15 @@ function Cart({ cartItems }) {
           {cartItems.map((item, index) => (
             <div key={index}>
               <h3>{item.name}</h3>
+
               <p>${item.price}</p>
+
+              <button
+                onClick={() => removeFromCart(index)}
+              >
+                Remove
+              </button>
+
               <hr />
             </div>
           ))}

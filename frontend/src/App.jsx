@@ -14,6 +14,11 @@ function App() {
   const addToCart = (product) => {
     setCartItems((prev) => [...prev, product]);
   };
+  const removeFromCart = (indexToRemove) => {
+  setCartItems((prev) =>
+    prev.filter((_, index) => index !== indexToRemove)
+  );
+};
 
   return (
     <>
@@ -32,7 +37,8 @@ function App() {
         <Route
           path="/cart"
           element={
-            <Cart cartItems={cartItems} />
+            <Cart cartItems={cartItems}
+                removeFromCart={removeFromCart}/>
           }
         />
 
