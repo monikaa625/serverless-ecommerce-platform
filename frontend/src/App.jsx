@@ -1,35 +1,30 @@
-import { useState } from "react";
-import "./App.css";
-import products from "./data/products";
-import ProductCard from "./components/ProductCard";
+import { Routes, Route } from "react-router-dom";
+
+import Navbar from "./components/Navbar";
+
+import Home from "./pages/Home";
+import Products from "./pages/Products";
+import Cart from "./pages/Cart";
+import Login from "./pages/Login";
 
 function App() {
-  const [cartCount, setCartCount] = useState(0);
-
-  const addToCart = () => {
-    setCartCount(cartCount + 1);
-  };
-
   return (
-    <div className="app">
-      <h1 className="title">
-        Serverless E-Commerce Platform
-      </h1>
+    <>
+      <Navbar />
 
-      <div className="cart">
-        Cart: {cartCount}
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
 
-      <div className="products-grid">
-        {products.map((product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            addToCart={addToCart}
-          />
-        ))}
-      </div>
-    </div>
+        <Route
+          path="/products"
+          element={<Products />}
+        />
+
+        <Route path="/cart" element={<Cart />} />
+
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </>
   );
 }
 
